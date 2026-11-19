@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
+/* 프로젝트 기본 색상 및 글꼴 변수 설정 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdf7fb;
+  --foreground: #262238;
 }
 
+/* Tailwind CSS v4 테마 토큰에 Noto Sans KR 글꼴 연결 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-noto-sans-kr), "Noto Sans KR", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 전체 화면 기본 글꼴과 부드러운 파스텔 배경 적용 */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* 키보드(Tab 등)로 이동할 때 포커스 위치가 또렷하게 보이도록 설정 */
+:where(a:any-link, button):focus-visible {
+  outline: 3px solid #6c4df6;
+  outline-offset: 3px;
 }
