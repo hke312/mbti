@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import ShareResultButton from "@/components/ShareResultButton";
+import CharacterViewer from "@/components/three/CharacterViewer";
 import { MBTI_TYPES, type MbtiTypeCode } from "@/data/types";
 
 /**
@@ -77,16 +78,19 @@ async function ResultContent({
         <p className="text-xl font-bold text-slate-800">{typeInfo.nickname}</p>
       </section>
 
-      {/* 2) 캐릭터 자리: 다음 단계에서 3D 캐릭터가 들어갈 대표 색상 배경의 둥근 상자 */}
-      <div className="flex justify-center">
+      {/* 2) 캐릭터 자리: 해당 유형의 3D 동물 캐릭터 */}
+      <div className="flex flex-col items-center gap-2.5">
         <div
-          className="flex h-44 w-full max-w-[280px] items-center justify-center rounded-3xl border-4 border-white/90 px-6 text-center shadow-[0_12px_30px_rgba(120,105,170,0.14)]"
-          style={{ backgroundColor: typeInfo.color }}
+          className="h-[280px] w-full rounded-3xl border-4 border-white/90 shadow-[0_12px_30px_rgba(120,105,170,0.14)]"
+          style={{
+            background: `radial-gradient(circle at 50% 42%, #FFFFFFEA 0%, ${typeInfo.color} 100%)`,
+          }}
         >
-          <span className="rounded-full bg-white/85 px-5 py-2.5 text-lg font-extrabold text-slate-800 shadow-xs">
-            {typeInfo.character.name}
-          </span>
+          <CharacterViewer typeCode={typeInfo.code} />
         </div>
+        <span className="inline-flex rounded-full border border-white/80 bg-white/85 px-4 py-1 text-xs font-bold text-slate-700 shadow-xs">
+          {typeInfo.character.name} · {typeInfo.character.animal}
+        </span>
       </div>
 
       {/* 3) 한 줄 소개와 성격 설명 */}

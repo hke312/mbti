@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HomeCharacterShowcase from "@/components/HomeCharacterShowcase";
 
 // 첫 화면에 보여 줄 서비스 특징 카드 3개의 데이터를 배열로 정리했습니다.
 const FEATURE_CARDS = [
@@ -51,6 +52,9 @@ export default function Home() {
             간단한 질문에 답하고 나만의 성격 유형과 3D 동물 캐릭터를 확인해 보세요.
           </p>
         </div>
+
+        {/* 제목 아래: 3초마다 다른 유형으로 바뀌는 3D 캐릭터 쇼케이스 */}
+        <HomeCharacterShowcase />
 
         {/* 검사 페이지(`/test`)로 이동하는 큼직한 메인 버튼 */}
         <Link
