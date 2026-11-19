@@ -25,3 +25,29 @@ body {
   outline: 3px solid #6c4df6;
   outline-offset: 3px;
 }
+
+/* 검사 진행 막대(<progress>) 커스텀 파스텔 스타일 */
+progress.mbti-progress {
+  appearance: none;
+  border: 0 solid;
+  border-radius: 1e5px;
+  overflow: clip;
+  background: #ece7fe;
+}
+
+progress.mbti-progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+/* WebKit/Chromium과 Firefox 가상 요소 규칙은 반드시 분리해서 작성 */
+progress.mbti-progress::-webkit-progress-value {
+  background: linear-gradient(90deg, #a78bfa, #6c4df6);
+  border-radius: 1e5px;
+  transition: inline-size 0.25s ease;
+}
+
+progress.mbti-progress::-moz-progress-bar {
+  background: linear-gradient(90deg, #a78bfa, #6c4df6);
+  border-radius: 1e5px;
+  transition: inline-size 0.25s ease;
+}
